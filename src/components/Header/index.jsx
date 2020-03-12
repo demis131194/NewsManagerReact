@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import style from './Header.module.css';
+import { Navbar, NavbarBrand } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 class Header extends Component {
 
     render() {
         return (
-            <div className={style.header}>
-                <div className={style.title}>
-                    <h2>News-manager</h2>
-                </div>
-            </div>
+            <Navbar bg='dark' variant='dark'>
+                <NavbarBrand>News-manager</NavbarBrand>
+            </Navbar>
         )
     }
 }

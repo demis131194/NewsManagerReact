@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import
+import style from './Footer.module.css';
+import { Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 class Footer extends Component {
 
     render() {
         return (
-            <div >
-                <h2>News-manager</h2>
-            </div>
+            <footer className={style.footer}>
+                <Container>
+                    <span>News-manager FOOOTER</span>
+                </Container>
+            </footer>
         )
     }
 }
