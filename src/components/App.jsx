@@ -5,7 +5,10 @@ import Footer from './Footer'
 import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
         return (
             <div>

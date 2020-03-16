@@ -5,6 +5,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 
 class Footer extends Component {
+    
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (

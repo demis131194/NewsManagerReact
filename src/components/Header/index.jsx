@@ -7,6 +7,9 @@ import NavbarToggle from 'react-bootstrap/NavbarToggle';
 
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
