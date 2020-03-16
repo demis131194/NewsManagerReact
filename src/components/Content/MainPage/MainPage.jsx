@@ -15,7 +15,7 @@ class MainPage extends Component {
                 <hr/>
                 <hr/>
                 <hr/>
-                <NewsList />
+                <NewsList news={this.props.news}/>
             </div>
         );
     }

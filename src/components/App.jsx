@@ -14,7 +14,7 @@ class App extends Component {
             <div>
                 <BrowserRouter>
                     <Header />
-                    <Content />
+                    <Content news={this.props.news}/>
                     <Footer />
                 </BrowserRouter>
             </div>

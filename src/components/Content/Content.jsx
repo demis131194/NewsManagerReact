@@ -14,7 +14,7 @@ class Content extends Component {
     render() {
         return (
             <Container fluid='true'>
-                    <Route render={ () => <MainPage /> } path='/' exact/>
+                    <Route render={ () => <MainPage news={this.props.news}/> } path='/' exact/>
                     <Route render={ () => <LoginPage /> } path='/login' />
                     <Route render={ () => <RegisterPage /> } path='/register' />
             </Container>

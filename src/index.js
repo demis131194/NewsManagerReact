@@ -1,5 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import App from './components/App'
+import state from './redux/state'
 
-render(<App />, document.getElementById('root'));
+
+render(<App news={state.news}/>, document.getElementById('root'));
