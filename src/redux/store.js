@@ -1,3 +1,3 @@
 import {createStore} from 'redux';
 
-const store = createStore();
+let store = createStore();
