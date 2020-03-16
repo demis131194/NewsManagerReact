@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css'
+import { Navbar, NavbarBrand, Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
+import NavbarToggle from 'react-bootstrap/NavbarToggle';
 
 
 class Header extends Component {
@@ -8,7 +11,26 @@ class Header extends Component {
     render() {
         return (
             <Navbar bg='dark' variant='dark'>
-                <NavbarBrand>News-manager</NavbarBrand>
+                <NavbarBrand className='nav-link'>
+                    <NavLink to='/' className='nav-link text-white'>
+                        News-manager
+                    </NavLink>
+                </NavbarBrand>
+                <NavbarToggle aria-controls="responsive-navbar-nav" />
+                <NavbarCollapse id="responsive-navbar-nav">
+                    <Nav className='ml-auto'>
+                        <Nav.Link>
+                            <NavLink to='/login' className='nav-link'>
+                                Loggin
+                            </NavLink>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <NavLink to='/register' className='nav-link' >
+                                Register
+                            </NavLink>
+                        </Nav.Link>
+                    </Nav>
+                </NavbarCollapse>
             </Navbar>
         )
     }
