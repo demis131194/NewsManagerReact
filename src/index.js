@@ -4,4 +4,4 @@ import App from './components/App'
 import state from './redux/state'
 
 
-render(<App news={state.news}/>, document.getElementById('root'));
+render(<App state={state}/>, document.getElementById('root'));

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchNewsComponent from './SearchNewsComponent/SearchNewsComponent';
 import NewsList from './NewsList/NewsList';
 
-class MainPage extends Component {
+class NewsListPage extends Component {
 
     constructor(props) {
         super(props);
@@ -11,14 +11,14 @@ class MainPage extends Component {
     render() {
         return (
             <div>
-                <SearchNewsComponent />
+                <SearchNewsComponent state={this.props.state.searchContent} />
                 <hr/>
                 <hr/>
                 <hr/>
-                <NewsList news={this.props.news}/>
+                <NewsList news={this.props.state.news}/>
             </div>
         );
     }
 }
 
-export default MainPage;
+export default NewsListPage;
