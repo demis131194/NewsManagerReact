@@ -8,13 +8,13 @@ class App extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     render() {
         return (
             <div>
                 <BrowserRouter>
                     <Header />
-                    <Content state={this.props.state.mainContent}/>
+                    <Content state={this.props.state.mainContent} chAuthEvent={this.props.chAuthEvent} />
                     <Footer />
                 </BrowserRouter>
             </div>

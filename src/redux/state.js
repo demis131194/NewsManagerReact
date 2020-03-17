@@ -1,3 +1,5 @@
+import {renderTree} from '../render'
+
 let state = {
     mainContent: {
         newsPage: {
@@ -299,10 +301,21 @@ let state = {
                         "surname": "Jackson"
                     }
                 ],
+                selectedTags: [
+
+                ],
+                selectedAuthor: {
+
+                },
             },
         },
     },
     
 }
+
+export let changeSelectedAuthorEvent = (selectedAuthor) => {
+    state.mainContent.newsPage.searchContent.selectedAuthor = selectedAuthor.value;
+    renderTree(state);
+};
 
 export default state;
