@@ -1,9 +1,12 @@
 import React from 'react';
-import {render} from 'react-dom';
-// import App from './components/App'
-import state from './redux/state'
-// import {changeSelectedAuthorEvent} from './redux/state'
-import { renderTree } from './render'
+import { render } from 'react-dom';
+import App from './components/App'
+import store from './redux/state'
 
-// render(<App state={state} chAuthEvent={changeSelectedAuthorEvent}/>, document.getElementById('root'));
-renderTree(state);
+let renderTree = (state) => {
+    render(<App state={state} chAuthEvent={store.changeSelectedAuthorEvent.bind(store)} />, document.getElementById('root'));
+}
+
+renderTree(store.getState());
+
+store.subscribe(renderTree);

@@ -54,7 +54,6 @@ class SearchNewsComponent extends Component {
     }
 
     handleChangeSelectAuthor(selectedOption) {
-        debugger;
         let selectedAuthor = selectedOption.value;
         this.props.chAuthEvent(selectedAuthor);
     }
