@@ -4,7 +4,7 @@ import App from './components/App'
 import store from './redux/state'
 
 let renderTree = (state) => {
-    render(<App state={state} chAuthEvent={store.changeSelectedAuthorEvent.bind(store)} />, document.getElementById('root'));
+    render(<App state={state} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 }
 
 renderTree(store.getState());

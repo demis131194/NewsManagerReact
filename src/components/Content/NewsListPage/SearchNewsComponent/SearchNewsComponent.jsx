@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import Select from 'react-select';
+import { changedSelectedAuthorActionCreator, resetSearchActionCreator } from '../../../../redux/state';
 
 class SearchNewsComponent extends Component {
 
@@ -42,7 +43,7 @@ class SearchNewsComponent extends Component {
                         />
                     </Col>
                     <Col lg='2'>
-                        <Button variant='danger' onClick={this.handleResetClick}>RESET</Button>
+                        <Button variant='danger' onClick={this.handleResetClick.bind(this)}>RESET</Button>
                     </Col>
                 </Row>
             </Container>
@@ -54,12 +55,11 @@ class SearchNewsComponent extends Component {
     }
 
     handleChangeSelectAuthor(selectedOption) {
-        let selectedAuthor = selectedOption.value;
-        this.props.chAuthEvent(selectedAuthor);
+        this.props.dispatch(changedSelectedAuthorActionCreator(selectedOption));
     }
 
     handleResetClick() {
-        alert('Reset clicked!')
+        this.props.dispatch(resetSearchActionCreator());
     }
 }
 

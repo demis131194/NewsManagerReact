@@ -11,7 +11,7 @@ class NewsListPage extends Component {
     render() {
         return (
             <div>
-                <SearchNewsComponent state={this.props.state.searchContent} chAuthEvent={this.props.chAuthEvent} />
+                <SearchNewsComponent state={this.props.state.searchContent} dispatch={this.props.dispatch} />
                 <hr/>
                 <hr/>
                 <hr/>

@@ -1,4 +1,4 @@
-const dataBase =  {
+const dataBase = {
     news: [
         {
             "id": 8,
@@ -298,7 +298,10 @@ const dataBase =  {
     ],
 }
 
-let store ={
+const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_AUTHOR_SELECT';
+const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
+
+let store = {
     _state: {
         mainContent: {
             newsPage: {
@@ -307,36 +310,57 @@ let store ={
                     tags: dataBase.tags,
                     authors: dataBase.authors,
                     selectedTags: [
-    
+
                     ],
-                    selectedAuthor: {
-    
-                    },
+                    selectedAuthor: null,
                 },
             },
         },
-        
+
+    },
+
+    _callSubscriber(store) {
+        console.log('State changed');
     },
 
     getState() {
         return this._state;
     },
 
-    _callSubscriber(store)  {
-        console.log('State changed');
-    },
-
-    changeSelectedAuthorEvent(selectedAuthor) {
-        debugger;
-        this._state.mainContent.newsPage.searchContent.selectedAuthor = selectedAuthor.value;
-        this._callSubscriber(this._state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
+    // changeSelectedAuthorEvent(selectedAuthor) {
+    //     this._state.mainContent.newsPage.searchContent.selectedAuthor = selectedAuthor.value;
+    //     this._callSubscriber(this._state);
+    // },
+
+    // resetSearchEvent() {
+    //     this._state.mainContent.newsPage.searchContent.selectedAuthor = null;
+    //     this._state.mainContent.newsPage.searchContent.selectedTags = null;
+    //     this._callSubscriber(this._state);
+    // },
+
+    dispatch(action) {
+        if (action.type === CHANGE_SELECTED_AUTHOR_ACTION_TYPE) {
+            this._state.mainContent.newsPage.searchContent.selectedAuthor = action.selectedOption;
+            this._callSubscriber(this._state);
+        } else if (action.type === RESET_SEARCH_ACTION_TYPE) {
+            this._state.mainContent.newsPage.searchContent.selectedAuthor = null;
+            this._state.mainContent.newsPage.searchContent.selectedTags = null;
+            this._callSubscriber(this._state);
+        }
+    }
 }
+
+
+export const changedSelectedAuthorActionCreator = (selectedOption) => ({
+        type: CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
+        selectedOption: selectedOption,
+});
+
+export const resetSearchActionCreator = () => ({type: RESET_SEARCH_ACTION_TYPE});
 
 window.store = store;
 export default store;
