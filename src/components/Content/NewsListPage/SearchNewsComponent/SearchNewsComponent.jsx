@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import { changedSelectedAuthorActionCreator, resetSearchActionCreator } from '../../../../redux/state';
+import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator } from '../../../../redux/state';
 
 class SearchNewsComponent extends Component {
 
@@ -11,6 +11,15 @@ class SearchNewsComponent extends Component {
     }
 
     render() {
+        const authorOptions = this.props.state.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}`}));
+        const tagsOptions = this.props.state.tags.map(tag => ({ value: tag, label: tag.name }));
+
+        const selectedAuthor = this.props.state.selectedAuthor;
+        const selectedAithorOption = selectedAuthor ? {value: selectedAuthor, label: `${selectedAuthor.surname} ${selectedAuthor.name}`} : null;
+
+        const selectedTags = this.props.state.selectedTags;
+        const selectedTagsOption = selectedTags.map(tag => ({ value: tag, label: tag.name }));
+
         return (
             <Container>
                 <Row>
@@ -19,11 +28,11 @@ class SearchNewsComponent extends Component {
                             defaultValue={null}
                             isMulti
                             name="colors"
-                            options={this.props.state.tags.map(tag => ({ value: tag, label: tag.name }))}
+                            options={tagsOptions}
                             className="basic-multi-select"
                             classNamePrefix="select"
-                            value={this.props.state.selectedTags}
-                            onChange={this.handleChangeSelectTags}
+                            value={selectedTagsOption}
+                            onChange={this.handleChangeSelectTags.bind(this)}
                         />
                     </Col>
                     <Col lg='2'>
@@ -35,10 +44,10 @@ class SearchNewsComponent extends Component {
                         <Select 
                             defaultValue={null}
                             name="colors"
-                            options={this.props.state.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}`}))}
+                            options={authorOptions}
                             className="basic-select"
                             classNamePrefix="select"
-                            value={this.props.state.selectedAuthor}
+                            value={selectedAithorOption}
                             onChange={this.handleChangeSelectAuthor.bind(this)}
                         />
                     </Col>
@@ -50,8 +59,8 @@ class SearchNewsComponent extends Component {
         )
     }
 
-    handleChangeSelectTags() {
-        alert('Tags changed');
+    handleChangeSelectTags(selectedOptions) {
+        this.props.dispatch(changedSelectedTagsActionCreator(selectedOptions));
     }
 
     handleChangeSelectAuthor(selectedOption) {

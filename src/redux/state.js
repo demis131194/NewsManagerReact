@@ -300,6 +300,7 @@ const dataBase = {
 
 const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_AUTHOR_SELECT';
 const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
+const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_TAGS_SELECT';
 
 let store = {
     _state: {
@@ -344,11 +345,14 @@ let store = {
 
     dispatch(action) {
         if (action.type === CHANGE_SELECTED_AUTHOR_ACTION_TYPE) {
-            this._state.mainContent.newsPage.searchContent.selectedAuthor = action.selectedOption;
+            this._state.mainContent.newsPage.searchContent.selectedAuthor = action.selectedAuthor;
             this._callSubscriber(this._state);
         } else if (action.type === RESET_SEARCH_ACTION_TYPE) {
             this._state.mainContent.newsPage.searchContent.selectedAuthor = null;
-            this._state.mainContent.newsPage.searchContent.selectedTags = null;
+            this._state.mainContent.newsPage.searchContent.selectedTags = [];
+            this._callSubscriber(this._state);
+        } else if (action.type === CHANGE_SELECTED_TAGS_ACTION_TYPE) {
+            this._state.mainContent.newsPage.searchContent.selectedTags = action.selectedTags;
             this._callSubscriber(this._state);
         }
     }
@@ -357,7 +361,12 @@ let store = {
 
 export const changedSelectedAuthorActionCreator = (selectedOption) => ({
         type: CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
-        selectedOption: selectedOption,
+        selectedAuthor: selectedOption.value,
+});
+
+export const changedSelectedTagsActionCreator = (selectedOptions) => ({
+    type: CHANGE_SELECTED_TAGS_ACTION_TYPE,
+    selectedTags: selectedOptions.map(selectedTag => selectedTag.value),
 });
 
 export const resetSearchActionCreator = () => ({type: RESET_SEARCH_ACTION_TYPE});
