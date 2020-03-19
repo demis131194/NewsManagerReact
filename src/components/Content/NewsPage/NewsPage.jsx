@@ -8,6 +8,7 @@ class NewsPage extends Component {
     }
 
     render() {
+        debugger;
         return (
             <Container>
                 <Row>

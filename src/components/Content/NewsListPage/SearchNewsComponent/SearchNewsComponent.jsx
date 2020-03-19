@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import Select from 'react-select';
-// import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator } from '../../../../redux/search-news-bar-reducer';
 
 class SearchNewsComponent extends Component {
 
@@ -11,15 +10,15 @@ class SearchNewsComponent extends Component {
     }
 
     render() {
-        const authorOptions = this.props.searchContent.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}` }));
-        const tagsOptions = this.props.searchContent.tags.map(tag => ({ value: tag, label: tag.name }));
+        const authorOptions = this.props.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}` }));
+        const tagsOptions = this.props.tags.map(tag => ({ value: tag.id, label: tag.name, tag: tag}));
 
-        const selectedAuthor = this.props.searchContent.selectedAuthor;
-        const selectedAuthorOption = selectedAuthor ? { value: selectedAuthor, label: `${selectedAuthor.surname} ${selectedAuthor.name}` } : null;
+        const selectedAuthor = this.props.selectedAuthor;
+        const selectedAuthorOption = selectedAuthor ? { value: selectedAuthor, label: `${selectedAuthor.surname} ${selectedAuthor.name}`, } : null;
 
-        const selectedTags = this.props.searchContent.selectedTags;
-        const selectedTagsOption = selectedTags.map(tag => ({ value: tag, label: tag.name }));
-
+        const selectedTags = this.props.selectedTags;
+        const selectedTagsOption = selectedTags.map(tag => ({ value: tag.id, label: tag.name, tag: tag }));
+        
         return (
             <Container>
                 <Row>

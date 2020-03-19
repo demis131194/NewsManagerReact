@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
-import NewsItem from './NewsItem/NewsItem';
 import NewsList from './NewsList';
-import StroeContext from '../../../../StoreContext';
+import { connect } from 'react-redux';
 
-class NewsListContainer extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <StroeContext.Consumer > 
-                {
-                    (store) => (
-                        <NewsList newsContent={store.getState().mainContent.newsPage.newsContent }/>
-                    )
-                }
-            </StroeContext.Consumer>
-            
-        )
+let mapStateToProps = (state) => {
+    return {
+        newsContent: state.mainContent.newsPage.newsContent,
     }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+const NewsListContainer = connect(mapStateToProps, mapDispatchToProps)(NewsList);
 
 export default NewsListContainer;

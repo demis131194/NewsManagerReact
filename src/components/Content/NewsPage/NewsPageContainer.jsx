@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
 import NewsPage from './NewsPage';
-import StroeContext from '../../../StoreContext';
+import { connect } from 'react-redux';
 
-class NewsPageContainer extends Component {
-    constructor(props) {
-        super(props);
+let mapStateToProps = (state, ownProps) => {
+    debugger;
+    return {
+        news: state.mainContent.newsPage.newsContent.news,
+        newsId: ownProps.match.params.newsId,
     }
-
-    render() {
-        let newsId = this.props.match.params.newsId;
-        return (
-            <StroeContext.Consumer>
-                {
-                    (store) => {
-                        return (
-                            <NewsPage newsId={newsId} news={store.getState().mainContent.newsPage.newsContent.news}/>
-                        );
-                    }
-                }
-            </StroeContext.Consumer>
-        );
-    }
-
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+const NewsPageContainer = connect(mapStateToProps, mapDispatchToProps)(NewsPage);
 
 export default NewsPageContainer;

@@ -12,11 +12,7 @@ let reducers = combineReducers({
     }),
 });
 
-// let reducers = combineReducers({
-//     searchContent: searchNewsBarReducer,
-// });
-
 let store = createStore(reducers);
 
-window.store = store.getState();
+window.store = store;
 export default store;

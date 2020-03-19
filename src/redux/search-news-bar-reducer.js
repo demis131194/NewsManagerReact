@@ -1,6 +1,6 @@
-const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_AUTHOR_SELECT';
+const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_SELECTED_AUTHOR';
 const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
-const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_TAGS_SELECT';
+const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_SELECTED_TAGS';
 
 let initiaState = {
     tags: [
@@ -81,16 +81,25 @@ let initiaState = {
 
 const searchNewsBarReducer = (state = initiaState, action) => {
     switch (action.type) {
-        case CHANGE_SELECTED_AUTHOR_ACTION_TYPE:
-            state.selectedAuthor = action.selectedAuthor;
-            return state;
-        case RESET_SEARCH_ACTION_TYPE:
-            state.selectedAuthor = null;
-            state.selectedTags = [];
-            return state;
-        case CHANGE_SELECTED_TAGS_ACTION_TYPE:
-            state.selectedTags = action.selectedTags;
-            return state;
+        case CHANGE_SELECTED_AUTHOR_ACTION_TYPE: {
+            return {
+                ...state,
+                selectedAuthor : action.selectedAuthor,
+            };
+        }
+        case RESET_SEARCH_ACTION_TYPE: {
+            return {
+                ...state,
+                selectedAuthor : null,
+                selectedTags : [],
+            }
+        }
+        case CHANGE_SELECTED_TAGS_ACTION_TYPE: {
+            return {
+                ...state,
+                selectedTags : action.selectedTags,
+            }
+        }
         default:
             return state;
     }
@@ -103,7 +112,7 @@ export const changedSelectedAuthorActionCreator = (selectedOption) => ({
 
 export const changedSelectedTagsActionCreator = (selectedOptions) => ({
     type: CHANGE_SELECTED_TAGS_ACTION_TYPE,
-    selectedTags: selectedOptions.map(selectedTag => selectedTag.value),
+    selectedTags: selectedOptions ? selectedOptions.map(selectedTag => selectedTag.tag) : [],
 });
 
 export const resetSearchActionCreator = () => ({ type: RESET_SEARCH_ACTION_TYPE });

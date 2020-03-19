@@ -8,11 +8,12 @@ class NewsItem extends Component {
     }
 
     render() {
+        let tags = this.props.news.tags.map(tag => <span key={tag.id}>{tag.name} </span>);
         return (
             <div className='border border-danger'>
                 <div>
                     <h2>
-                        <Link to={'/news/' + this.props.news.id} target='__blank' > 
+                        <Link to={'/news/' + this.props.news.id} target='__blank' >
                             {this.props.news.title}
                         </Link>
                     </h2>
@@ -21,9 +22,7 @@ class NewsItem extends Component {
                 <div>
                     {this.props.news.fullText}
                     <hr />
-                    {this.props.news.tags.map(tag => {
-                        return <span>{tag.name} </span>
-                    })}
+                    {tags}
                 </div>
             </div>
         )
