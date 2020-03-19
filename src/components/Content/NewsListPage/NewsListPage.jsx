@@ -15,7 +15,7 @@ class NewsListPage extends Component {
                 <hr/>
                 <hr/>
                 <hr/>
-                <NewsList news={this.props.state.news}/>
+                <NewsList state={this.props.state.newsContent}/>
             </div>
         );
     }

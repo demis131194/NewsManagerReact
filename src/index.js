@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './components/App'
-import store from './redux/state'
+import store from './redux/redux-store'
 
 let renderTree = (state) => {
     render(<App state={state} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
@@ -9,4 +9,7 @@ let renderTree = (state) => {
 
 renderTree(store.getState());
 
-store.subscribe(renderTree);
+store.subscribe(() => {
+    let state = store.getState();
+    renderTree(state);
+});

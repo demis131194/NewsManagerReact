@@ -10,7 +10,7 @@ class NewsList extends Component {
     render() {
         return (
             <div>
-                {this.props.news.map( news => <NewsItem news={news}/>)}
+                {this.props.state.news.map( news => <NewsItem news={news}/>)}
             </div>
         )
     }

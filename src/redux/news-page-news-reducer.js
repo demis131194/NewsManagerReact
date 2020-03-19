@@ -1,4 +1,5 @@
-const dataBase = {
+
+let initiaState = {
     news: [
         {
             "id": 8,
@@ -224,152 +225,14 @@ const dataBase = {
                 }
             ]
         }
-    ],
-    tags: [
-        {
-            "id": 1,
-            "name": "History"
-        },
-        {
-            "id": 2,
-            "name": "Science"
-        },
-        {
-            "id": 3,
-            "name": "Comedy"
-        },
-        {
-            "id": 4,
-            "name": "Nature"
-        },
-        {
-            "id": 5,
-            "name": "Art"
-        },
-        {
-            "id": 6,
-            "name": "My"
-        },
-        {
-            "id": 7,
-            "name": "Dogs"
-        },
-        {
-            "id": 8,
-            "name": "Cats"
-        }
-    ],
-    authors: [
-        {
-            "id": 2,
-            "name": "Vasya",
-            "surname": "Pupkin"
-        },
-        {
-            "id": 3,
-            "name": "Sova",
-            "surname": "Sovna"
-        },
-        {
-            "id": 4,
-            "name": "Artem",
-            "surname": "Hlebny"
-        },
-        {
-            "id": 5,
-            "name": "Vasya",
-            "surname": "Asin"
-        },
-        {
-            "id": 6,
-            "name": "Nikita",
-            "surname": "Semenov"
-        },
-        {
-            "id": 7,
-            "name": "Dima",
-            "surname": "Ford"
-        },
-        {
-            "id": 8,
-            "name": "Dima",
-            "surname": "Jackson"
-        }
-    ],
+    ]
 }
 
-const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_AUTHOR_SELECT';
-const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
-const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_TAGS_SELECT';
-
-let store = {
-    _state: {
-        mainContent: {
-            newsPage: {
-                news: dataBase.news,
-                searchContent: {
-                    tags: dataBase.tags,
-                    authors: dataBase.authors,
-                    selectedTags: [
-
-                    ],
-                    selectedAuthor: null,
-                },
-            },
-        },
-
-    },
-
-    _callSubscriber(store) {
-        console.log('State changed');
-    },
-
-    getState() {
-        return this._state;
-    },
-
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
-
-    // changeSelectedAuthorEvent(selectedAuthor) {
-    //     this._state.mainContent.newsPage.searchContent.selectedAuthor = selectedAuthor.value;
-    //     this._callSubscriber(this._state);
-    // },
-
-    // resetSearchEvent() {
-    //     this._state.mainContent.newsPage.searchContent.selectedAuthor = null;
-    //     this._state.mainContent.newsPage.searchContent.selectedTags = null;
-    //     this._callSubscriber(this._state);
-    // },
-
-    dispatch(action) {
-        if (action.type === CHANGE_SELECTED_AUTHOR_ACTION_TYPE) {
-            this._state.mainContent.newsPage.searchContent.selectedAuthor = action.selectedAuthor;
-            this._callSubscriber(this._state);
-        } else if (action.type === RESET_SEARCH_ACTION_TYPE) {
-            this._state.mainContent.newsPage.searchContent.selectedAuthor = null;
-            this._state.mainContent.newsPage.searchContent.selectedTags = [];
-            this._callSubscriber(this._state);
-        } else if (action.type === CHANGE_SELECTED_TAGS_ACTION_TYPE) {
-            this._state.mainContent.newsPage.searchContent.selectedTags = action.selectedTags;
-            this._callSubscriber(this._state);
-        }
+const newsPageNewsReducer = (state = initiaState, action) => {
+    switch (action.type) {
+        default:
+            return state;
     }
 }
 
-
-export const changedSelectedAuthorActionCreator = (selectedOption) => ({
-        type: CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
-        selectedAuthor: selectedOption.value,
-});
-
-export const changedSelectedTagsActionCreator = (selectedOptions) => ({
-    type: CHANGE_SELECTED_TAGS_ACTION_TYPE,
-    selectedTags: selectedOptions.map(selectedTag => selectedTag.value),
-});
-
-export const resetSearchActionCreator = () => ({type: RESET_SEARCH_ACTION_TYPE});
-
-window.store = store;
-export default store;
+export default newsPageNewsReducer;
