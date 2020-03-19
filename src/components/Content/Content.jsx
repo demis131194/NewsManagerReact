@@ -15,8 +15,8 @@ class Content extends Component {
     render() {
         return (
             <Container fluid='true'>
-                <Route render={() => <NewsListPage dispatch={this.props.dispatch} state={this.props.state.newsPage} />} path='/' exact />
-                <Route render={(props) => <NewsPage newsId={props.match.params.newsId} news={this.props.state.newsPage.news} />}  path='/news/:newsId' />
+                <Route render={() => <NewsListPage store={this.props.store} />} path='/' exact />
+                <Route render={(props) => <NewsPage newsId={props.match.params.newsId} news={this.props.store.getState().mainContent.newsPage.newsContent.news} />}  path='/news/:newsId' />
                 <Route render={() => <LoginPage />} path='/login' />
                 <Route render={() => <RegisterPage />} path='/register' />
             </Container>

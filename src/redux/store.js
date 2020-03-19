@@ -304,7 +304,9 @@ let store = {
     _state: {
         mainContent: {
             newsPage: {
-                newsContent: dataBase.news,
+                newsContent: {
+                    news: dataBase.news,
+                },
                 searchContent: {
                     tags: dataBase.tags,
                     authors: dataBase.authors,

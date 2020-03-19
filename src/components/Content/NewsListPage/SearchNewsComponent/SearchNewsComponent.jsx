@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator } from '../../../../redux/search-news-bar-reducer';
+// import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator } from '../../../../redux/search-news-bar-reducer';
 
 class SearchNewsComponent extends Component {
 
@@ -11,13 +11,13 @@ class SearchNewsComponent extends Component {
     }
 
     render() {
-        const authorOptions = this.props.state.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}`}));
-        const tagsOptions = this.props.state.tags.map(tag => ({ value: tag, label: tag.name }));
+        const authorOptions = this.props.searchContent.authors.map(author => ({ value: author, label: `${author.surname} ${author.name}` }));
+        const tagsOptions = this.props.searchContent.tags.map(tag => ({ value: tag, label: tag.name }));
 
-        const selectedAuthor = this.props.state.selectedAuthor;
-        const selectedAithorOption = selectedAuthor ? {value: selectedAuthor, label: `${selectedAuthor.surname} ${selectedAuthor.name}`} : null;
+        const selectedAuthor = this.props.searchContent.selectedAuthor;
+        const selectedAuthorOption = selectedAuthor ? { value: selectedAuthor, label: `${selectedAuthor.surname} ${selectedAuthor.name}` } : null;
 
-        const selectedTags = this.props.state.selectedTags;
+        const selectedTags = this.props.searchContent.selectedTags;
         const selectedTagsOption = selectedTags.map(tag => ({ value: tag, label: tag.name }));
 
         return (
@@ -47,7 +47,7 @@ class SearchNewsComponent extends Component {
                             options={authorOptions}
                             className="basic-select"
                             classNamePrefix="select"
-                            value={selectedAithorOption}
+                            value={selectedAuthorOption}
                             onChange={this.handleChangeSelectAuthor.bind(this)}
                         />
                     </Col>
@@ -60,15 +60,18 @@ class SearchNewsComponent extends Component {
     }
 
     handleChangeSelectTags(selectedOptions) {
-        this.props.dispatch(changedSelectedTagsActionCreator(selectedOptions));
+        // this.props.dispatch(changedSelectedTagsActionCreator(selectedOptions));
+        this.props.changeSelectedTags(selectedOptions);
     }
 
     handleChangeSelectAuthor(selectedOption) {
-        this.props.dispatch(changedSelectedAuthorActionCreator(selectedOption));
+        // this.props.dispatch(changedSelectedAuthorActionCreator(selectedOption));
+        this.props.changeSelectedAuthor(selectedOption);
     }
 
     handleResetClick() {
-        this.props.dispatch(resetSearchActionCreator());
+        // this.props.dispatch(resetSearchActionCreator());
+        this.props.resetSearch();
     }
 }
 

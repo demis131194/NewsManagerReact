@@ -3,13 +3,10 @@ import { render } from 'react-dom';
 import App from './components/App'
 import store from './redux/redux-store'
 
-let renderTree = (state) => {
-    render(<App state={state} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
+let renderTree = () => {
+    render(<App store={store} />, document.getElementById('root'));
 }
 
-renderTree(store.getState());
+renderTree();
 
-store.subscribe(() => {
-    let state = store.getState();
-    renderTree(state);
-});
+store.subscribe(renderTree);

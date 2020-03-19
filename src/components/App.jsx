@@ -14,7 +14,7 @@ class App extends Component {
             <div>
                 <BrowserRouter>
                     <Header />
-                    <Content state={this.props.state.mainContent} dispatch={this.props.dispatch} />
+                    <Content store={this.props.store} />
                     <Footer />
                 </BrowserRouter>
             </div>

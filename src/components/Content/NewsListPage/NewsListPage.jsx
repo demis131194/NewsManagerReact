@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchNewsComponent from './SearchNewsComponent/SearchNewsComponent';
-import NewsList from './NewsList/NewsList';
+import SearchNewsContainer from './SearchNewsComponent/SearchNewsContainer';
+import NewsListContainer from './NewsList/NewsListContainer';
 
 class NewsListPage extends Component {
 
@@ -11,11 +11,11 @@ class NewsListPage extends Component {
     render() {
         return (
             <div>
-                <SearchNewsComponent state={this.props.state.searchContent} dispatch={this.props.dispatch} />
+                <SearchNewsContainer store={this.props.store} />
                 <hr/>
                 <hr/>
                 <hr/>
-                <NewsList state={this.props.state.newsContent}/>
+                <NewsListContainer store={this.props.store}/>
             </div>
         );
     }
