@@ -11,11 +11,11 @@ class NewsListPage extends Component {
     render() {
         return (
             <div>
-                <SearchNewsContainer store={this.props.store} />
+                <SearchNewsContainer />
                 <hr/>
                 <hr/>
                 <hr/>
-                <NewsListContainer store={this.props.store}/>
+                <NewsListContainer />
             </div>
         );
     }

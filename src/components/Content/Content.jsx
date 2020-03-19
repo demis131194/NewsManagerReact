@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import NewsListPage from './NewsListPage/NewsListPage';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
-import NewsPage from './NewsPage/NewsPage';
+import NewsPageContainer from './NewsPage/NewsPageContainer';
 
 class Content extends Component {
     constructor(props) {
@@ -15,8 +15,13 @@ class Content extends Component {
     render() {
         return (
             <Container fluid='true'>
-                <Route render={() => <NewsListPage store={this.props.store} />} path='/' exact />
-                <Route render={(props) => <NewsPage newsId={props.match.params.newsId} news={this.props.store.getState().mainContent.newsPage.newsContent.news} />}  path='/news/:newsId' />
+                <Route render={() => <NewsListPage />} path='/' exact />
+                {/* <Route
+                    render={(props) => <NewsPage newsId={props.match.params.newsId} news={this.props.store.getState().mainContent.newsPage.newsContent.news} />}
+                    path='/news/:newsId' /> */}
+                <Route
+                    component={NewsPageContainer}
+                    path='/news/:newsId' />
                 <Route render={() => <LoginPage />} path='/login' />
                 <Route render={() => <RegisterPage />} path='/register' />
             </Container>

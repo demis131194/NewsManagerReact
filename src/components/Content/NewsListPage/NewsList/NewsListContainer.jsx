@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem/NewsItem';
 import NewsList from './NewsList';
+import StroeContext from '../../../../StoreContext';
 
 class NewsListContainer extends Component {
 
@@ -10,7 +11,14 @@ class NewsListContainer extends Component {
 
     render() {
         return (
-            <NewsList newsContent={this.props.store.getState().mainContent.newsPage.newsContent }/>
+            <StroeContext.Consumer > 
+                {
+                    (store) => (
+                        <NewsList newsContent={store.getState().mainContent.newsPage.newsContent }/>
+                    )
+                }
+            </StroeContext.Consumer>
+            
         )
     }
 }
