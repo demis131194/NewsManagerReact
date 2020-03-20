@@ -1,79 +1,13 @@
+
 const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_SELECTED_AUTHOR';
 const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
 const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_SELECTED_TAGS';
+const SET_TAGS = 'SET_TAGS';
+const SET_AUTHORS = 'SET_AUTHORS';
 
 let initiaState = {
-    tags: [
-        {
-            "id": 1,
-            "name": "History"
-        },
-        {
-            "id": 2,
-            "name": "Science"
-        },
-        {
-            "id": 3,
-            "name": "Comedy"
-        },
-        {
-            "id": 4,
-            "name": "Nature"
-        },
-        {
-            "id": 5,
-            "name": "Art"
-        },
-        {
-            "id": 6,
-            "name": "My"
-        },
-        {
-            "id": 7,
-            "name": "Dogs"
-        },
-        {
-            "id": 8,
-            "name": "Cats"
-        }
-    ],
-    authors: [
-        {
-            "id": 2,
-            "name": "Vasya",
-            "surname": "Pupkin"
-        },
-        {
-            "id": 3,
-            "name": "Sova",
-            "surname": "Sovna"
-        },
-        {
-            "id": 4,
-            "name": "Artem",
-            "surname": "Hlebny"
-        },
-        {
-            "id": 5,
-            "name": "Vasya",
-            "surname": "Asin"
-        },
-        {
-            "id": 6,
-            "name": "Nikita",
-            "surname": "Semenov"
-        },
-        {
-            "id": 7,
-            "name": "Dima",
-            "surname": "Ford"
-        },
-        {
-            "id": 8,
-            "name": "Dima",
-            "surname": "Jackson"
-        }
-    ],
+    tags: [],
+    authors: [],
     selectedTags: [
     ],
     selectedAuthor: null,
@@ -81,25 +15,32 @@ let initiaState = {
 
 const searchNewsBarReducer = (state = initiaState, action) => {
     switch (action.type) {
-        case CHANGE_SELECTED_AUTHOR_ACTION_TYPE: {
+        case CHANGE_SELECTED_AUTHOR_ACTION_TYPE:
             return {
                 ...state,
-                selectedAuthor : action.selectedAuthor,
-            };
-        }
-        case RESET_SEARCH_ACTION_TYPE: {
-            return {
-                ...state,
-                selectedAuthor : null,
-                selectedTags : [],
+                selectedAuthor: action.selectedAuthor,
             }
-        }
-        case CHANGE_SELECTED_TAGS_ACTION_TYPE: {
+        case RESET_SEARCH_ACTION_TYPE:
             return {
                 ...state,
-                selectedTags : action.selectedTags,
+                selectedAuthor: null,
+                selectedTags: [],
             }
-        }
+        case CHANGE_SELECTED_TAGS_ACTION_TYPE:
+            return {
+                ...state,
+                selectedTags: action.selectedTags,
+            }
+        case SET_TAGS:
+            return {
+                ...state,
+                tags: action.tags,
+            }
+        case SET_AUTHORS:
+            return {
+                ...state,
+                authors: action.authors,
+            }
         default:
             return state;
     }
@@ -116,5 +57,15 @@ export const changedSelectedTagsActionCreator = (selectedOptions) => ({
 });
 
 export const resetSearchActionCreator = () => ({ type: RESET_SEARCH_ACTION_TYPE });
+
+export const setTags = (tags) => ({
+    type: SET_TAGS,
+    tags: tags ? tags : [],
+});
+
+export const setAuthors = (authors) => ({
+    type: SET_AUTHORS,
+    authors: authors ? authors : [],
+});
 
 export default searchNewsBarReducer;

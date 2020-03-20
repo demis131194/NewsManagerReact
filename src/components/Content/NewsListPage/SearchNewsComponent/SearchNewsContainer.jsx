@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator } from '../../../../redux/search-news-bar-reducer';
+import { changedSelectedAuthorActionCreator, resetSearchActionCreator, changedSelectedTagsActionCreator, setAuthors, setTags } from '../../../../redux/search-news-bar-reducer';
 import SearchNewsComponent from './SearchNewsComponent';
 import { connect } from 'react-redux';
 
@@ -24,6 +24,14 @@ let mapDispatchToProps = (dispatch) => {
         },
         resetSearch: () => {
             let action = resetSearchActionCreator();
+            dispatch(action);
+        },
+        setAuthors: (authors) => {
+            let action = setAuthors(authors);
+            dispatch(action);
+        },
+        setTags: (tags) => {
+            let action = setTags(tags);
             dispatch(action);
         },
     }
