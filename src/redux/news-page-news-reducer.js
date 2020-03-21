@@ -1,5 +1,5 @@
 
-const SET_NEWS_ACTION_TYPE = 'SET_NEWS_ACTION';
+const SET_NEWS_ACTION_TYPE = 'SET_SINGLE_NEWS_ACTION';
 
 let initiaState = {
     news: []

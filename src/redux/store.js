@@ -17,6 +17,9 @@ let store = {
                     selectedAuthor: null,
                 },
             },
+            singleNewsPage: {
+                news: null,
+            }
         },
 
     },

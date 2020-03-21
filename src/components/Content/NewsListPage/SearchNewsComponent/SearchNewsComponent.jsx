@@ -64,7 +64,6 @@ class SearchNewsComponent extends Component {
         // http://localhost:8080/news-manager/authors
         // http://localhost:8080/news-manager/tags
         
-        console.log('componentDidMount!!!!');
 
         axios.get('http://localhost:8080/news-manager/authors')
             .then(response => this.props.setAuthors(response.data));
@@ -73,9 +72,6 @@ class SearchNewsComponent extends Component {
             .then(response => this.props.setTags(response.data));
     }
 
-    componentWillUnmount() {
-        console.log('componentWillUnmount!!!!')
-    }
 }
 
 export default SearchNewsComponent;

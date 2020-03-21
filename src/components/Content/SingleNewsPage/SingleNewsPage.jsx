@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button, Row } from 'react-bootstrap';
 import NewsPost from './NewsPost/NewsPost';
+import * as axios from 'axios';
 
 class NewsPage extends Component {
     constructor(props) {
@@ -8,11 +9,10 @@ class NewsPage extends Component {
     }
 
     render() {
-        debugger;
         return (
             <Container>
                 <Row>
-                    <NewsPost news={this.props.news.find(item => item.id == this.props.newsId)}/>
+                    <NewsPost news={this.props.news} />
                 </Row>
                 <Row>
                     <Button>Prev News</Button>
@@ -20,6 +20,11 @@ class NewsPage extends Component {
                 </Row>
             </Container>
         );
+    }
+
+    componentDidMount() {
+        axios.get(`http://localhost:8080/news-manager/news/${this.props.newsId}`)
+            .then(response => this.props.setNews(response.data))
     }
 
 }

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import NewsPage from './NewsPage';
+import NewsPage from './SingleNewsPage';
 import { connect } from 'react-redux';
+import { setSingleNewsActionCreator } from '../../../redux/single-news-page-reducer';
 
 let mapStateToProps = (state, ownProps) => {
     debugger;
     return {
-        news: state.mainContent.newsPage.newsContent.news,
+        news: state.mainContent.singleNewsPage.news,
         newsId: ownProps.match.params.newsId,
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-
+        setNews: (news) => {
+            let action = setSingleNewsActionCreator(news);
+            dispatch(action);
+        },
     }
 }
 
