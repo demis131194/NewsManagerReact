@@ -48,7 +48,7 @@ const searchNewsBarReducer = (state = initiaState, action) => {
 
 export const changedSelectedAuthorActionCreator = (selectedOption) => ({
     type: CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
-    selectedAuthor: selectedOption.value,
+    selectedAuthor: selectedOption ? selectedOption.value : null,
 });
 
 export const changedSelectedTagsActionCreator = (selectedOptions) => ({

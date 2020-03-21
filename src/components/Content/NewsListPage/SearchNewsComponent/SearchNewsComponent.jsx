@@ -43,7 +43,8 @@ class SearchNewsComponent extends Component {
                     <Col lg='10'>
                         <Select
                             defaultValue={null}
-                            name="colors"
+                            name="colors" 
+                            isClearable={true}
                             options={authorOptions}
                             className="basic-select"
                             classNamePrefix="select"
