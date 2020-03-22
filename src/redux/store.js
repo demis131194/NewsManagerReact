@@ -7,6 +7,9 @@ let store = {
             newsPage: {
                 newsContent: {
                     news: dataBase.news,
+                    currentPage: 1,
+                    pageSize: 5,
+                    newsTotalCount: 0,
                 },
                 searchContent: {
                     tags: dataBase.tags,

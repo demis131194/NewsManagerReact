@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem/NewsItem';
-import * as axios from 'axios';
 import { Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import ReactPaginate from 'react-paginate';
 
-class NewsList extends Component {
+let NewsList = (props) => {
 
-    constructor(props) {
-        super(props);
-    }
+    let pagesCount = Math.ceil(props.newsTotalCount / props.pageSize);
 
-    render() {
-        debugger;
-        return (
-            <Container>
-                {this.props.news.map( news => <NewsItem key={news.id} news={news}/>)}
-            </Container>
-        )
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:8080/news-manager/news?count=10')
-            .then(response => this.props.setNews(response.data.news));
-    }
+    return (
+        <Container>
+            {props.news.map(news => <NewsItem key={news.id} news={news} />)}
+            <nav className=''>
+                <ReactPaginate
+                    pageCount={pagesCount}
+                    pageRangeDisplayed='2'
+                    marginPagesDisplayed='2'
+                    onPageChange={props.changeCurrentpage}
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakClassName='page-item'
+                    breakLinkClassName='page-link'
+                    containerClassName='pagination justify-content-center p-2'
+                    pageClassName='page-item'
+                    pageLinkClassName='page-link'
+                    previousClassName='page-item'
+                    nextClassName='page-item'
+                    previousLinkClassName='page-link'
+                    nextLinkClassName='page-link'
+                    activeClassName='active'
+                    disabledClassName='disabled'
+                    hrefBuilder={() => {return '#'}}
+                />
+            </nav>
+        </Container>
+    )
 }
 
 export default NewsList;
