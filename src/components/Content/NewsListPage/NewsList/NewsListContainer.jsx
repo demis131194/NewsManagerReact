@@ -16,11 +16,12 @@ class NewsListAPIComponent extends Component {
         pageSize={this.props.pageSize}
         news={this.props.news}
         currentPage={this.props.currentPage}
-        changeCurrentpage={this.changeCurrentpage.bind(this)}
+        changeCurrentpage={this.changeCurrentPage.bind(this)}
+        changePageSize={this.changePageSize.bind(this)}
         /> 
     }
 
-    changeCurrentpage = (page) => {
+    changeCurrentPage = (page) => {
         let newPage = page.selected + 1;
         this.props.setCurrentPage(newPage);
         axios.get(`http://localhost:8080/news-manager/news?page=${newPage}&pageSize=${this.props.pageSize}`)
@@ -32,6 +33,15 @@ class NewsListAPIComponent extends Component {
 
     componentDidMount() {
         axios.get(`http://localhost:8080/news-manager/news?page=${this.props.currentPage}&pageSize=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setNews(response.data.news);
+                this.props.setNewsTotalCount(response.data.totalCount);
+            });
+    }
+
+    changePageSize = (pageSize) => {
+        this.props.setPageSize(pageSize);
+        axios.get(`http://localhost:8080/news-manager/news?page=${this.props.currentPage}&pageSize=${pageSize.value}`)
             .then(response => {
                 this.props.setNews(response.data.news);
                 this.props.setNewsTotalCount(response.data.totalCount);
@@ -63,10 +73,9 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(action);
         },
         setCurrentPage: (currentPage) => {
-            debugger;
             let action = setNewsCurrentPageActionCreator(currentPage);
             dispatch(action);
-        }
+        },
     }
 }
 

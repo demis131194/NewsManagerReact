@@ -7,7 +7,7 @@ const SET_NEWS_CURRENT_PAGE_ACTION_TYPE = 'SET_NEWS_CURRENT_PAGE_ACTION';
 let initiaState = {
     news: [],
     currentPage: 1,
-    pageSize: 4,
+    pageSize: 5,
     newsTotalCount: 0,
 }
 
@@ -50,7 +50,7 @@ export const setNewsTotalCountActionCreator = (newsTotalCount) => ({
 
 export const setNewsPageSizeActionCreator = (pageSize) => ({
     type: SET_NEWS_PAGE_SIZE_ACTION_TYPE,
-    pageSize: pageSize ? pageSize : 0,
+    pageSize: pageSize ? pageSize.value : 5,
 });
 
 export const setNewsCurrentPageActionCreator = (currentPage) => ({

@@ -14,9 +14,7 @@ let store = {
                 searchContent: {
                     tags: dataBase.tags,
                     authors: dataBase.authors,
-                    selectedTags: [
-
-                    ],
+                    selectedTags: [],
                     selectedAuthor: null,
                 },
             },

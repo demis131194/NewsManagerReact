@@ -27,7 +27,7 @@ class SearchNewsComponent extends Component {
                         <Select
                             defaultValue={null}
                             isMulti
-                            name="colors"
+                            name="tags"
                             options={tagsOptions}
                             className="basic-multi-select"
                             classNamePrefix="select"
@@ -43,7 +43,7 @@ class SearchNewsComponent extends Component {
                     <Col lg='10'>
                         <Select
                             defaultValue={null}
-                            name="colors" 
+                            name="author" 
                             isClearable={true}
                             options={authorOptions}
                             className="basic-select"
