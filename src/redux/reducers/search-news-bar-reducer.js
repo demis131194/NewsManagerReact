@@ -1,9 +1,4 @@
-
-const CHANGE_SELECTED_AUTHOR_ACTION_TYPE = 'CHANGE_SELECTED_AUTHOR';
-const RESET_SEARCH_ACTION_TYPE = 'RESET_SEARCH';
-const CHANGE_SELECTED_TAGS_ACTION_TYPE = 'CHANGE_SELECTED_TAGS';
-const SET_TAGS = 'SET_TAGS';
-const SET_AUTHORS = 'SET_AUTHORS';
+import * as types from '../constants/action-type-constants.js'
 
 let initiaState = {
     tags: [],
@@ -15,28 +10,28 @@ let initiaState = {
 
 const searchNewsBarReducer = (state = initiaState, action) => {
     switch (action.type) {
-        case CHANGE_SELECTED_AUTHOR_ACTION_TYPE:
+        case types.CHANGE_SELECTED_AUTHOR_ACTION_TYPE:
             return {
                 ...state,
                 selectedAuthor: action.selectedAuthor,
             }
-        case RESET_SEARCH_ACTION_TYPE:
+        case types.RESET_SEARCH_ACTION_TYPE:
             return {
                 ...state,
                 selectedAuthor: null,
                 selectedTags: [],
             }
-        case CHANGE_SELECTED_TAGS_ACTION_TYPE:
+        case types.CHANGE_SELECTED_TAGS_ACTION_TYPE:
             return {
                 ...state,
                 selectedTags: action.selectedTags,
             }
-        case SET_TAGS:
+        case types.SET_TAGS_ACTION_TYPE:
             return {
                 ...state,
                 tags: action.tags,
             }
-        case SET_AUTHORS:
+        case types.SET_AUTHORS_ACTION_TYPE:
             return {
                 ...state,
                 authors: action.authors,
@@ -47,24 +42,24 @@ const searchNewsBarReducer = (state = initiaState, action) => {
 }
 
 export const changedSelectedAuthorActionCreator = (selectedOption) => ({
-    type: CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
+    type: types.CHANGE_SELECTED_AUTHOR_ACTION_TYPE,
     selectedAuthor: selectedOption ? selectedOption.value : null,
 });
 
 export const changedSelectedTagsActionCreator = (selectedOptions) => ({
-    type: CHANGE_SELECTED_TAGS_ACTION_TYPE,
+    type: types.CHANGE_SELECTED_TAGS_ACTION_TYPE,
     selectedTags: selectedOptions ? selectedOptions.map(selectedTag => selectedTag.tag) : [],
 });
 
-export const resetSearchActionCreator = () => ({ type: RESET_SEARCH_ACTION_TYPE });
+export const resetSearchActionCreator = () => ({ type: types.RESET_SEARCH_ACTION_TYPE });
 
-export const setTags = (tags) => ({
-    type: SET_TAGS,
+export const setTagsActionCreator = (tags) => ({
+    type: types.SET_TAGS_ACTION_TYPE,
     tags: tags ? tags : [],
 });
 
-export const setAuthors = (authors) => ({
-    type: SET_AUTHORS,
+export const setAuthorsActionCreator = (authors) => ({
+    type: types.SET_AUTHORS_ACTION_TYPE,
     authors: authors ? authors : [],
 });
 

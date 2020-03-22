@@ -1,4 +1,4 @@
-import searchNewsBarReducer from "./search-news-bar-reducer";
+import searchNewsBarReducer from "./reducers/search-news-bar-reducer";
 import dataBase from "./database";
 
 let store = {

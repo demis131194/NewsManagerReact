@@ -24,6 +24,8 @@ class NewsItem extends Component {
                     <div>
                         {this.props.news.fullText}
                         <hr />
+                        Author - {`${this.props.news.author.surname} ${this.props.news.author.name}`}
+                        <hr />
                         {tags}
                     </div>
                 </Col>

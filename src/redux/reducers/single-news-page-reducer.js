@@ -1,5 +1,5 @@
 
-const SET_SINGLE_NEWS_ACTION_TYPE = 'SET_SINGLE_NEWS_ACTION';
+import * as types from '../constants/action-type-constants.js'
 
 let initiaState = {
     news: {},
@@ -7,7 +7,7 @@ let initiaState = {
 
 const singlePageReducer = (state = initiaState, action) => {
     switch (action.type) {
-        case SET_SINGLE_NEWS_ACTION_TYPE:
+        case types.SET_SINGLE_NEWS_ACTION_TYPE:
             return {
                 ...state,
                 news: action.news,
@@ -18,7 +18,7 @@ const singlePageReducer = (state = initiaState, action) => {
 }
 
 export const setSingleNewsActionCreator = (news) => ({
-    type: SET_SINGLE_NEWS_ACTION_TYPE,
+    type: types.SET_SINGLE_NEWS_ACTION_TYPE,
     news: news,
 });
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NewsList from './NewsList'
 import * as axios from 'axios';
 import { connect } from 'react-redux';
-import { setNewsActionCreator, setNewsPageSizeActionCreator, setNewsTotalCountActionCreator, setNewsCurrentPageActionCreator } from '../../../../redux/news-page-news-reducer';
+import { setNewsActionCreator, setNewsPageSizeActionCreator, setNewsTotalCountActionCreator, setNewsCurrentPageActionCreator } from '../../../../redux/reducers/news-page-news-reducer';
 
 class NewsListAPIComponent extends Component {
 

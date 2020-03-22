@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
-import searchNewsBarReducer from './search-news-bar-reducer'
-import newsPageNewsReducer from "./news-page-news-reducer";
-import singlePageReducer from "./single-news-page-reducer";
+import searchNewsBarReducer from './reducers/search-news-bar-reducer'
+import newsPageNewsReducer from "./reducers/news-page-news-reducer";
+import singlePageReducer from "./reducers/single-news-page-reducer";
 
 let reducers = combineReducers({
     mainContent: combineReducers({

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NewsPage from './SingleNewsPage';
 import { connect } from 'react-redux';
-import { setSingleNewsActionCreator } from '../../../redux/single-news-page-reducer';
+import { setSingleNewsActionCreator } from '../../../redux/reducers/single-news-page-reducer';
 
 let mapStateToProps = (state, ownProps) => {
     debugger;

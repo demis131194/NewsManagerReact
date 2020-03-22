@@ -12,9 +12,6 @@ class NewsListPage extends Component {
         return (
             <div>
                 <SearchNewsContainer />
-                <hr/>
-                <hr/>
-                <hr/>
                 <NewsListContainer />
             </div>
         );
