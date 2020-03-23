@@ -296,6 +296,32 @@ const dataBase = {
             "surname": "Jackson"
         }
     ],
+    users: [
+        {
+            id: 1,
+            name: 'Demis',
+            surname: 'Katsuk',
+            login: 'admin',
+            password: 'admin',
+            role: 'ADMIN',
+        },
+        {
+            id: 2,
+            name: 'Pasha',
+            surname: 'Pavlentiy',
+            login: 'user1',
+            password: 'user1',
+            role: 'USER',
+        },
+        {
+            id: 3,
+            name: 'Dima',
+            surname: 'Dimas',
+            login: 'user2',
+            password: 'user2',
+            role: 'USER',
+        }
+    ]
 }
 
 export default dataBase;

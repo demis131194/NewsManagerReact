@@ -15,19 +15,13 @@ class Header extends Component {
         return (
             <Navbar bg='dark' variant='dark'>
                 <NavbarBrand className='nav-link'>
-                    <Link to='/' className='nav-link text-white'>
-                        News-manager
-                    </Link>
+                    <Link to='/' className='nav-link text-white'>News-manager</Link>
                 </NavbarBrand>
                 <NavbarToggle aria-controls="responsive-navbar-nav" />
                 <NavbarCollapse id="responsive-navbar-nav">
                     <Nav className='ml-auto'>
-                        <Link to='/login' className='nav-link'>
-                            Loggin
-                        </Link>
-                        <Link to='/register' className='nav-link' >
-                            Register
-                        </Link>
+                        <Link to='/login' className='nav-link'>Sign in</Link>
+                        <Link to='/register' className='nav-link' >Register</Link>
                     </Nav>
                 </NavbarCollapse>
             </Navbar>

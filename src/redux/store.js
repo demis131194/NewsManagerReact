@@ -22,7 +22,14 @@ let store = {
                 news: null,
             }
         },
-
+        authUser: {
+            id: 1,
+            name: 'Demis',
+            surname: 'Katsuk',
+            login: 'admin',
+            password: 'admin',
+            role: 'ADMIN',
+        }
     },
 
     _callSubscriber(store) {

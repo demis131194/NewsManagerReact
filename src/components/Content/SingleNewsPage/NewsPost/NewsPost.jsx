@@ -7,7 +7,6 @@ class NewsPost extends Component {
     }
 
     render() {
-        debugger;
         return (
             <Container className='border border-secondary'>
                 <Row>

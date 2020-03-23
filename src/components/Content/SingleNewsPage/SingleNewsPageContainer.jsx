@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { setSingleNewsActionCreator } from '../../../redux/reducers/single-news-page-reducer';
 
 let mapStateToProps = (state, ownProps) => {
-    debugger;
     return {
         news: state.mainContent.singleNewsPage.news,
         newsId: ownProps.match.params.newsId,
