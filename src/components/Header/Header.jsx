@@ -18,6 +18,7 @@ let Header = (props) => {
     } else {
         auth = [<Link to='/login' className='nav-link'>Sign in</Link>, <Link to='/register' className='nav-link' >Register</Link>]
     }
+    
     return (
         <Navbar bg='dark' variant='dark'>
             <NavbarBrand className='nav-link'>

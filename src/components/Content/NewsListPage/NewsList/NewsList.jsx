@@ -10,17 +10,21 @@ let NewsList = (props) => {
     let pagesCount = Math.ceil(props.newsTotalCount / props.pageSize);
 
     let pageSizeOptions = [
-        { label: '5', value: 5 }, 
-        { label: '25', value: 25 }, 
+        { label: '5', value: 5 },
+        { label: '25', value: 25 },
         { label: '50', value: 50 }
     ];
-    
+
     let currentPageSize = { label: props.pageSize, value: props.pageSize };
 
     return (
         <div>
-            <Container>
-                {props.news.map(news => <NewsItem key={news.id} news={news} />)}
+            <Container fluid='true'>
+                <Row>
+                    <Col>
+                        {props.news.map(news => <NewsItem key={news.id} news={news} />)}
+                    </Col>
+                </Row>
                 <Row className='justify-content-md-center'>
                     <Col lg='2' md='2'>
                         <Select

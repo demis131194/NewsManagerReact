@@ -15,9 +15,9 @@ let SearchNewsComponent = (props) => {
     const selectedTagsOption = selectedTags.map(tag => ({ value: tag.id, label: tag.name, tag: tag }));
 
     return (
-        <Container>
-            <Row>
-                <Col lg='10'>
+        <Container className='p-3'>
+            <Row className='p-1'>
+                <Col lg={{ span: 5, offset: 3 }}>
                     <Select
                         defaultValue={null}
                         isMulti
@@ -33,8 +33,8 @@ let SearchNewsComponent = (props) => {
                     <Button variant='primary' onClick={props.handleSearchClick}>SEARCH</Button>
                 </Col>
             </Row>
-            <Row>
-                <Col lg='10'>
+            <Row className='p-21'>
+                <Col lg={{ span: 5, offset: 3 }}>
                     <Select
                         defaultValue={null}
                         name="author"

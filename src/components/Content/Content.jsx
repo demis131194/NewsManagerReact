@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
 import { Route } from 'react-router-dom';
-import NewsListPage from './NewsListPage/NewsListPage';
 import RegisterPage from './RegisterPage/RegisterPage';
 import NewsPageContainer from './SingleNewsPage/SingleNewsPageContainer';
 import LoginPageContainer from './LoginPage/LoginPageContainer.jsx';
+import NewsListPageContainer from './NewsListPage/NewsListPageContainer';
 
 class Content extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Content extends Component {
     render() {
         return (
             <Container fluid='true'>
-                <Route render={() => <NewsListPage />} path='/' exact />
+                <Route render={() => <NewsListPageContainer />} path='/' exact />
                 <Route
                     component={NewsPageContainer}
                     path='/news/:newsId' />
