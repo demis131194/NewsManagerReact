@@ -299,7 +299,7 @@ const dataBase = {
     users: [
         {
             id: 1,
-            name: 'Demis',
+            name: 'Denis',
             surname: 'Katsuk',
             login: 'admin',
             password: 'admin',

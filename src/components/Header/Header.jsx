@@ -24,7 +24,16 @@ let Header = (props) => {
                 <Link to='/' className='nav-link text-white'>News-manager</Link>
             </NavbarBrand>
             <NavbarToggle aria-controls="responsive-navbar-nav" />
-            <span className='navbar-text pl-5 text-white'>{welcome}</span>
+            
+            <div className='w-25 pl-2 text-right'>
+                <a href='#'>EN  </a>
+                <a href='#'>RU  </a>
+            </div>
+
+            <div className='w-25 pl-2 text-right'>
+                <span className='text-white'>{welcome}</span>
+            </div>
+
             <NavbarCollapse id="responsive-navbar-nav">
                 <Nav className='ml-auto'>
                     {auth}
