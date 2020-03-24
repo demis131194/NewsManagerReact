@@ -1,11 +1,10 @@
 import * as types from '../constants/action-type-constants.js';
 
+let user = JSON.parse(localStorage.getItem('user'));
+
 let initialState = {
-    id: null,
-    name: null,
-    surname: null,
-    login: null,
-    role: null,
+    isAuth: user ? true : false,
+    ...user,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,11 +24,8 @@ export const setUserData = (userData) => {
     return {
         type: types.SET_USER_DATA_ACTION_TYPE,
         data: {
-            id: userData.id,
-            name: userData.name,
-            surname: userData.surname,
-            login: userData.login,
-            role: userData.role,
+            isAuth: userData.id ? true : false,
+            ...userData,
         }
     }
 }

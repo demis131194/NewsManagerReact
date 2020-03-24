@@ -15,7 +15,7 @@ class NewsItem extends Component {
                 <Col>
                     <div>
                         <h2>
-                            <Link to={'/news/' + this.props.news.id} target='__blank' >
+                            <Link to={'/news/' + this.props.news.id} >
                                 {this.props.news.title}
                             </Link>
                         </h2>

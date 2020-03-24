@@ -23,6 +23,7 @@ let store = {
             }
         },
         authUser: {
+            isAuth: true,
             id: 1,
             name: 'Demis',
             surname: 'Katsuk',
