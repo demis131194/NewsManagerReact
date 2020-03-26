@@ -22,7 +22,9 @@ let NewsList = (props) => {
             <Container fluid='true'>
                 <Row>
                     <Col>
-                        {props.news.map(news => <NewsItem key={news.id} news={news} />)}
+                        {
+                            props.news.map(news => <NewsItem key={news.id} news={news} isUserAuth={props.isUserAuth} handleDeleteNewsBtnClick={props.handleDeleteNewsBtnClick}/>)
+                        }
                     </Col>
                 </Row>
                 <Row className='justify-content-md-center'>

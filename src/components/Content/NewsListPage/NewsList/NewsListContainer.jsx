@@ -18,7 +18,20 @@ class NewsListAPIComponent extends Component {
         currentPage={this.props.currentPage}
         changeCurrentpage={this.changeCurrentPage.bind(this)}
         changePageSize={this.changePageSize.bind(this)}
+        isUserAuth={this.props.isUserAuth}
+        handleDeleteNewsBtnClick={this.handleDeleteNewsBtnClick.bind(this)}
         /> 
+    }
+
+    handleDeleteNewsBtnClick = (newsId) => {
+        axios.delete(`http://localhost:8080/news-manager/news/` + newsId)
+            .then( response => {
+                alert(`News - ${newsId} deleted`);
+                this.componentDidMount();
+            })
+            .catch( error => {
+                alert('Some error!')
+            });
     }
 
     changeCurrentPage = (page) => {
@@ -55,6 +68,7 @@ let mapStateToProps = (state) => {
         pageSize: state.mainContent.newsPage.newsContent.pageSize,
         newsTotalCount: state.mainContent.newsPage.newsContent.newsTotalCount,
         currentPage: state.mainContent.newsPage.newsContent.currentPage,
+        isUserAuth: state.authUser.isAuth,
     }
 }
 
