@@ -7,11 +7,20 @@ let NewsAddEditPage = (props) => {
     let tagOptions = props.tagsOptions.map(tag => ({ label: tag.name, value: tag }));
     let currentTags = props.currentTags.map(tag => ({ label: tag.name, value: tag }));
 
+    let submitFunc = (e) => { 
+        e.preventDefault();
+        if(props.newsId) {
+            props.onUpdateClick();
+        } else {
+            props.onAcceptClick();
+        }
+    }
+
     return (
-        <form onSubmit={(e) => { e.preventDefault(); props.onAcceptClick()}} className={style.addNews}>
+        <form onSubmit={submitFunc} className={style.addNews}>
             <div className="text-center mb-4">
-                <h1 className="h3 mb-3 font-weight-normal">Your post</h1>
-                <p>Write your post here.</p>
+                <h1 className="h3 mb-3 font-weight-normal">News</h1>
+                {props.newsId ? <p>Edit news here.</p> : <p>Write news here.</p> }
             </div>
 
             <div className="form-label-group mt-1">
@@ -44,7 +53,7 @@ let NewsAddEditPage = (props) => {
                 />
             </div>
 
-            <button className="btn btn-lg btn-primary btn-block mt-2 w-25 d-inline p-2 mr-1" type="submit" >Post</button>
+    <button className="btn btn-lg btn-primary btn-block mt-2 w-25 d-inline p-2 mr-1" type="submit" >{props.newsId ? 'Update' : 'Post' }</button>
             <button className="btn btn-lg btn-danger btn-block mt-2 w-25 d-inline p-2 ml-1" type="reset" onClick={props.onCancelClick}>Cancel</button>
 
         </form>

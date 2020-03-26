@@ -19,12 +19,35 @@ class NewsAddEditPageApiContainer extends Component {
             onCurrentTagsCreate={this.onCurrentTagsCreate.bind(this)}
             onCancelClick={this.onCancelClick.bind(this)}
             onAcceptClick={this.onAcceptClick.bind(this)}
+            onUpdateClick={this.onUpdateClick.bind(this)}
+            newsId={this.props.newsId}
         />
     }
 
     componentDidMount() {
         axios.get('http://localhost:8080/news-manager/tags')
             .then(response => this.props.setTagOptions(response.data));
+
+        if (this.props.newsId) {
+            axios.get('http://localhost:8080/news-manager/news/' + this.props.newsId)
+                .then(response => {
+                    this.props.setCurrentTitle(response.data.title);
+                    this.props.setCurrentShortText(response.data.shortText);
+                    this.props.setCurrentFullText(response.data.fullText);
+                    this.props.setCurrentTags(response.data.tags);
+                })
+                .catch(errors => {
+                    alert('Some error');
+                });
+        }
+    }
+
+    componentWillUnmount() {
+        this.props.setId(null);
+        this.props.setCurrentTitle('');
+        this.props.setCurrentShortText('');
+        this.props.setCurrentFullText('');
+        this.props.setCurrentTags([]);
     }
 
     onCurrentTitleChange(e) {
@@ -54,11 +77,6 @@ class NewsAddEditPageApiContainer extends Component {
     }
 
     onCancelClick() {
-        debugger;
-        this.props.setCurrentTitle('');
-        this.props.setCurrentShortText('');
-        this.props.setCurrentFullText('');
-        this.props.setCurrentTags([]);
         this.props.history.goBack();
     }
 
@@ -73,13 +91,29 @@ class NewsAddEditPageApiContainer extends Component {
         }
         axios.post('http://localhost:8080/news-manager/news', news)
             .then(response => {
-                if (response.status === 200) {
-                    this.props.setCurrentTitle('');
-                    this.props.setCurrentShortText('');
-                    this.props.setCurrentFullText('');
-                    this.props.setCurrentTags([]);
-                    this.props.history.push('/');
-                }
+                this.props.history.push('/');
+            })
+            .catch( errors => {
+                alert('Some error!')
+            });
+
+    }
+
+    onUpdateClick() {
+        let news = {
+            id: this.props.newAddEditPage.newsId,
+            title: this.props.newAddEditPage.currentTitleText,
+            shortText: this.props.newAddEditPage.currentShortText,
+            fullText: this.props.newAddEditPage.currentFullText,
+            author: this.props.newAddEditPage.currentAuthor,
+            tags: this.props.newAddEditPage.currentTags,
+        }
+        axios.put('http://localhost:8080/news-manager/news', news)
+            .then(response => {
+                this.props.history.push('/');
+            })
+            .catch( errors => {
+                alert('Some error!')
             });
 
     }
@@ -90,12 +124,17 @@ let mapStateToProps = (state, own) => {
     return {
         newAddEditPage: state.newAddEditPage,
         history: own.history,
-        newsId: own.newsId,
+        newsId: own.match.params.newsId,
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        setId: (newsId) => {
+            let data = { newsId: newsId };
+            let action = setAddEditNewsActionCreator(data);
+            dispatch(action);
+        },
         setTagOptions: (tagsOptions) => {
             let data = { tagsOptions: tagsOptions };
             let action = setAddEditNewsActionCreator(data);
