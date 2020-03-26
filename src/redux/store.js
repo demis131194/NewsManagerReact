@@ -33,6 +33,7 @@ let store = {
         },
         addEditTagsPage: {
             tags:[],
+            addTagName: '',
         }
     },
 
