@@ -30,6 +30,9 @@ let store = {
             login: 'admin',
             password: 'admin',
             role: 'ADMIN',
+        },
+        addEditTagsPage: {
+            tags:[],
         }
     },
 

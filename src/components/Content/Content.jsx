@@ -17,7 +17,7 @@ class Content extends Component {
 
     render() {
         return (
-            <Container fluid='true'>
+            <Container fluid='true' className='min-vh-100'>
                 <Route render={() => <NewsListPageContainer />} path='/' exact />
                 <Route
                     component={NewsPageContainer}

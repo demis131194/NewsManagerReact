@@ -4,6 +4,7 @@ import newsPageNewsReducer from "./reducers/news-page-news-reducer";
 import singlePageReducer from "./reducers/single-news-page-reducer";
 import authReducer from "./reducers/auth-reducer";
 import newsAddEditReducer from "./reducers/news-add-edit-reducer";
+import addEditTagsReducer from "./reducers/edit-add-tags-reducer";
 
 let reducers = combineReducers({
     mainContent: combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     }),
     authUser: authReducer,
     newAddEditPage: newsAddEditReducer,
+    addEditTagsPage: addEditTagsReducer,
 });
 
 let store = createStore(reducers);

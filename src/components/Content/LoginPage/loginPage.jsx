@@ -26,8 +26,8 @@ class LoginPage extends Component {
         return (
             <form className={style.login} onSubmit={(e) => {
                 e.preventDefault();
-                this.props.handleSubmit(this.state.login, this.state.password)
-            }}>
+                this.props.handleSubmit(this.state.login, this.state.password)}}>
+                    
                 <div className="text-center mb-4">
                     <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
                     <p>Enter your login and password.</p>
