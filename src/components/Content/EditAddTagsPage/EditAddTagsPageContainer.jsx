@@ -60,6 +60,7 @@ class EditAddTagsPageApiContainer extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     alert('Succes!');
+                    this.props.setAddTagName('')
                     this.componentDidMount();
                 }
             });

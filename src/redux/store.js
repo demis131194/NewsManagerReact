@@ -32,9 +32,14 @@ let store = {
             role: 'ADMIN',
         },
         addEditTagsPage: {
-            tags:[],
+            tags: [],
             addTagName: '',
-        }
+        },
+        addEditAuthorsPage: {
+            authors: [],
+            addAuthorName: '',
+            addAuthorSurname: '',
+        },
     },
 
     _callSubscriber(store) {
