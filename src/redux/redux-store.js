@@ -3,6 +3,7 @@ import searchNewsBarReducer from './reducers/search-news-bar-reducer'
 import newsPageNewsReducer from "./reducers/news-page-news-reducer";
 import singlePageReducer from "./reducers/single-news-page-reducer";
 import authReducer from "./reducers/auth-reducer";
+import newsAddEditReducer from "./reducers/news-add-edit-reducer";
 
 let reducers = combineReducers({
     mainContent: combineReducers({
@@ -13,6 +14,7 @@ let reducers = combineReducers({
         singleNewsPage: singlePageReducer,
     }),
     authUser: authReducer,
+    newAddEditPage: newsAddEditReducer,
 });
 
 let store = createStore(reducers);

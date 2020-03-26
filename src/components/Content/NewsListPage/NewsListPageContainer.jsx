@@ -10,7 +10,7 @@ class NewsListPageContainer extends Component {
     }
 
     render() {
-        return <NewsListPage isAuth={this.props.userIsAuth}/>
+        return <NewsListPage userIsAuth={this.props.userIsAuth} userRole={this.props.userRole}/>
     }
 
 }
@@ -18,6 +18,7 @@ class NewsListPageContainer extends Component {
 let mapStatetoProps = (state) => {
     return {
         userIsAuth: state.authUser.isAuth,
+        userRole: state.authUser.role,
     }
 }
 

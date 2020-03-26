@@ -12,7 +12,7 @@ let NewsListPage = (props) => {
             </Row>
             <Row>
                 <Col lg='2' md='3'>
-                {props.isAuth ? <SideMenuBar /> : <></>}
+                {props.userIsAuth ? <SideMenuBar userRule={props.userRole} /> : <></>}
                 </Col>
                 <Col lg='8' md='7'>
                     <NewsListContainer />
