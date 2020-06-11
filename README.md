@@ -1,3 +1,6 @@
+Front (React) для news-manager сервера. Используется redux. Позволяет просматривать новости. Для авторизированных пользователей доступно CRUD новстей и создание тегов.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
